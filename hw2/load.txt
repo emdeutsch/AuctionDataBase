@@ -1,0 +1,17 @@
+-- Load the Item table
+.separator |
+.import Items.dat Item
+UPDATE Item SET Category = NULL WHERE Category = 'NULL';
+UPDATE Item SET Currently = NULL WHERE Currently = 'NULL';
+UPDATE Item SET FirstBid = NULL WHERE FirstBid = 'NULL';
+
+-- Load the User table
+.separator |
+.import Users.dat User
+UPDATE User SET Location = NULL WHERE Location = 'NULL';
+UPDATE User SET Country = NULL WHERE Country = 'NULL';
+
+-- Load the Bid table
+.separator |
+.import Bids.dat Bid
+UPDATE Bid SET Amount = NULL WHERE Amount = 'NULL';
