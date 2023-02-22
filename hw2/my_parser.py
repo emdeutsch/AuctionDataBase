@@ -89,7 +89,8 @@ def parseJson(json_file):
             item_array = []
             item_array.append(itemID)
             item_array.append(item['Name'].replace('"', ''))
-            item_array.append(('~'.join(item['Category'])).replace('"', ''))
+            item_categories = list(set(item['Category']))
+            item_array.append(('~'.join(item_categories)).replace('"', ''))
             item_array.append(transformDollar(item['Currently']))
             item_array.append(transformDollar(item['First_Bid']))
             item_array.append(item['Number_of_Bids'])
