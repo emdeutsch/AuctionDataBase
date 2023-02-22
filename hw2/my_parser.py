@@ -131,17 +131,31 @@ def parseJson(json_file):
                 users_array.append(seller_array)
 
 
-        with open('Users.dat', 'w') as f:
-            for user in users_array:
-                f.write('|'.join(user) + '\n')
 
-        with open('Bids.dat', 'w') as f:
-            for bid in bids_array:
-                f.write('|'.join(bid) + '\n')
+        if f.name[-6] == '0' and f.name[-7] == '-':
+            with open('Users.dat', 'w') as f:
+                for user in users_array:
+                    f.write('|'.join(user) + '\n')
 
-        with open('Items.dat', 'w') as f:
-            for item in items_array:
-                f.write('|'.join(item) + '\n')
+            with open('Bids.dat', 'w') as f:
+                for bid in bids_array:
+                    f.write('|'.join(bid) + '\n')
+
+            with open('Items.dat', 'w') as f:
+                for item in items_array:
+                    f.write('|'.join(item) + '\n')
+        else:
+            with open('Users.dat', 'a') as f:
+                for user in users_array:
+                    f.write('|'.join(user) + '\n')
+
+            with open('Bids.dat', 'a') as f:
+                for bid in bids_array:
+                    f.write('|'.join(bid) + '\n')
+
+            with open('Items.dat', 'a') as f:
+                for item in items_array:
+                    f.write('|'.join(item) + '\n')
 
 
 """
