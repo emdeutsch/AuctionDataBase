@@ -88,15 +88,15 @@ def parseJson(json_file):
             itemID = item['ItemID']
             item_array = []
             item_array.append(itemID)
-            item_array.append(item['Name'])
-            item_array.append(','.join(item['Category']))
+            item_array.append(item['Name'].replace('"', ''))
+            item_array.append((','.join(item['Category'])).replace('"', ''))
             item_array.append(transformDollar(item['Currently']))
             item_array.append(transformDollar(item['First_Bid']))
             item_array.append(item['Number_of_Bids'])
             item_array.append(transformDttm(item['Started']))
             item_array.append(transformDttm(item['Ends']))
-            item_array.append(item['Country'])
-            item_array.append(item['Location'])
+            item_array.append(item['Country'].replace('"', ''))
+            item_array.append(item['Location'].replace('"', ''))
             if item['Description'] is not None:
                 item_array.append(item['Description'].replace('"', ''))
             items_array.append(item_array)
@@ -115,9 +115,9 @@ def parseJson(json_file):
                         bidder_array.append(bid['Bidder']['UserID'])
                         bidder_array.append(bid['Bidder']['Rating'])
                         if 'Country' in bid['Bidder']:
-                            bidder_array.append(bid['Bidder']['Country'])
+                            bidder_array.append(bid['Bidder']['Country'].replace('"', ''))
                         if 'Location' in bid['Bidder']:
-                            bidder_array.append(bid['Bidder']['Location'])
+                            bidder_array.append(bid['Bidder']['Location'].replace('"', ''))
                         users_array.append(bidder_array)
             if item['Seller']['UserID'] not in bidders_array and  item['Seller']['UserID'] not in sellers_array:
                 seller_array = []
@@ -125,9 +125,9 @@ def parseJson(json_file):
                 seller_array.append(item['Seller']['UserID'])
                 seller_array.append(item['Seller']['Rating'])
                 if 'Country' in item:
-                    seller_array.append(item['Country'])
+                    seller_array.append(item['Country'].replace('"', ''))
                 if 'Location' in item:
-                    seller_array.append(item['Location'])
+                    seller_array.append(item['Location'].replace('"', ''))
                 users_array.append(seller_array)
 
 
