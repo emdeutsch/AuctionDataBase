@@ -119,7 +119,14 @@ def parseJson(json_file):
                             bidder_array.append(bid['Bidder']['Country'].replace('"', ''))
                         if 'Location' in bid['Bidder']:
                             bidder_array.append(bid['Bidder']['Location'].replace('"', ''))
+                        bidder_array.append('b')
                         users_array.append(bidder_array)
+                    elif bid['Bidder']['UserID'] in sellers_array:
+                        for user in users_array:
+                            if user[0] == bid['Bidder']['UserID']:
+                                user[4] = 'sb'
+                                break
+
             if item['Seller']['UserID'] not in bidders_array and  item['Seller']['UserID'] not in sellers_array:
                 seller_array = []
                 sellers_array.append(item['Seller']['UserID'])
@@ -129,8 +136,13 @@ def parseJson(json_file):
                     seller_array.append(item['Country'].replace('"', ''))
                 if 'Location' in item:
                     seller_array.append(item['Location'].replace('"', ''))
+                seller_array.append('s')
                 users_array.append(seller_array)
-
+            elif item['Seller']['UserID'] in bidders_array:
+                    for user in users_array:
+                        if user[0] == item['Seller']['UserID']:
+                            user[4] = 'sb'
+                            break
 
 
         if f.name[-6] == '0' and f.name[-7] == '-':

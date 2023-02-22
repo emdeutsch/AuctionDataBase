@@ -23,7 +23,8 @@ CREATE TABLE User (
     UserID TEXT PRIMARY KEY,
     Rating INTEGER,
     Country TEXT,
-    Location TEXT
+    Location TEXT,
+    Type TEXT
 );
 
 -- Create the Bid table
